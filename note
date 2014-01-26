@@ -1,0 +1,19 @@
+--------------------------
+http://production.shippingapis.com/ShippingAPITest.dll
+--------------------------
+--------------- API ---------------
+RateV4
+--------------- API ---------------
+--------------- XML ---------------
+<RateV4Request USERID="966KEMBO4843"><Package ID="0"><Service>all</Service><ZipOrigination>20770</ZipOrigination><ZipDestination>10010</ZipDestination><Pounds>0</Pounds><Ounces>3.5</Ounces><Size>REGULAR</Size><Width>3.93700787</Width><Length>36.614173191</Length><Height>3.93700787</Height><Girth>12.3684750015172</Girth><Machinable>FALSE</Machinable></Package><Package ID="1"><Service>all</Service><ZipOrigination>20770</ZipOrigination><ZipDestination>10010</ZipDestination><Pounds>0</Pounds><Ounces>120.0</Ounces><Size>REGULAR</Size><Width>10</Width><Length>15</Length><Height>4.5</Height><Girth>29.0</Girth><Machinable>FALSE</Machinable></Package></RateV4Request>
+--------------- XML ---------------
+-------------------- response ---------------
+<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+    <Number>80040b1a</Number>
+    <Description>Authorization failure.  You are not authorized to connect to this server.</Description>
+    <Source>UspsCom::DoAuth</Source>
+</Error>
+-------------------- response ---------------
+Authorization failure.  You are not authorized to connect to this server.
+

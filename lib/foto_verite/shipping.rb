@@ -53,7 +53,8 @@ module FotoVerite
     def domestic_rates(origin_zip, destination_zip, packages, options={})
       Array(packages)  if not packages.is_a? Array
       request = xml_for_us(origin_zip, destination_zip, packages, options)
-      gateway_commit(:us_rates, 'RateV3', request, :live)
+      gateway_commit(:us_rates, 'RateV4', request, :test)
+      #gateway_commit(:us_rates, 'RateV3', request, :live)
     end
 
     # options Are?
@@ -115,7 +116,7 @@ module FotoVerite
     # XML built with Build:XmlMarkup
     def xml_for_us(origin_zip, destination_zip, packages, options)
       xm = Builder::XmlMarkup.new
-      xm.RateV3Request("USERID"=>"#{@username}") do
+      xm.RateV4Request("USERID"=>"#{@username}") do
         packages.each_index do |id|
           p = packages[id]
           xm.Package("ID" => "#{id}") {

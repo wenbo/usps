@@ -1,6 +1,17 @@
 
 require 'hpricot'
 require 'net/https'
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
+require 'foto_verite/tracking'
+require 'foto_verite/gateway'
+require 'foto_verite/shipping'
+require 'foto_verite/delivery_and_signature_confirmation'
+require 'foto_verite/service_standard'
+require 'foto_verite/open_distrubute_priority'
+require 'foto_verite/electric_merchandis_return'
+require 'foto_verite/express_mail'
+require 'foto_verite/address_verification'
+require 'foto_verite/international_mail_labels'
 require 'foto_verite/usps'
 require 'foto_verite/package'
 require 'foto_verite/location'

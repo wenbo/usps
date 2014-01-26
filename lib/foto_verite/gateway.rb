@@ -6,8 +6,10 @@ module FotoVerite
     LIVE_DOMAIN = 'production.shippingapis.com'
     LIVE_RESOURCE = '/ShippingAPI.dll'
 
-    TEST_DOMAIN ='testing.shippingapis.com'
+    #TEST_DOMAIN ='testing.shippingapis.com'
+    TEST_DOMAIN ='production.shippingapis.com'
     TEST_RESOURCE = '/ShippingAPITest.dll'
+    #TEST_RESOURCE = '/ShippingAPI.dll'
 
     SSL_DOMAIN = 'secure.shippingapis.com'
     SSL_RESOURCE = '/ShippingAPI.dll'
@@ -49,11 +51,21 @@ module FotoVerite
     }
 
     def gateway_commit(action, api, request, http_request, image_type="PDF")
+      #debugger
       retries = MAX_RETRIES
       begin
         url = URI.parse(url_path(http_request))
+        puts "--------------------------"
+        puts url
+        puts "--------------------------"
         req = Net::HTTP::Post.new(url.path)
         req.set_form_data({'API' => api, 'XML' => request})
+        puts "--------------- API ---------------"
+        puts api
+        puts "--------------- API ---------------"
+        puts "--------------- XML ---------------"
+        puts request
+        puts "--------------- XML ---------------"
         http = Net::HTTP.new(url.host, url.port)
         http.open_timeout = 2
         http.read_timeout = 2
@@ -76,6 +88,9 @@ module FotoVerite
         RAILS_DEFAULT_LOGGER.error "There is a socket error with USPS plugin"
         return "We appoligize for the inconvience but there is a problem with our server. To retry please refresh the browser"
       end
+      puts '-------------------- response ---------------'
+      puts response.body
+      puts '-------------------- response ---------------'
       case response
       when Net::HTTPSuccess, Net::HTTPRedirection
         case  PARSE_METHOD[action]
